@@ -4,20 +4,15 @@
 //require mysql
 var mysql = require("mysql");
 
-//var source = { localhost:}
-var source = {
-	localhost: {
-		port: 8080,
-		host:"localhost",
-		user: "root",
-		password:"",
-		database: "burgers_db"
-
-	},
-};
+var connection = mysql.createConnection({
+	host:"localhost",
+	port:3306,
+	user:"root",
+	password: "",
+	database: "burgers_db"
+});
 
 //var connection
-var connection = mysql.createConnection(source.localhost);
 
 //connection.connect
 connection.connect(function(err){
@@ -25,8 +20,8 @@ connection.connect(function(err){
 		console.error("error connection: " + err.stack);
 		return;
 	}
-	console.log("connected as id" + connection.threadId);
-})
+	console.log("connected as id " + connection.threadId);
+});
 
 module.exports = connection;
 

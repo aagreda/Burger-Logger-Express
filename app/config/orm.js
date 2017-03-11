@@ -9,31 +9,32 @@ var orm = {
 		var s = "SELECT * FROM " + tableName;
 
 		connection.query(s, function(err, result){
+			console.log(result);
 			callback(result);
 		});
 	},
 
-	// // insertOne()
-	// addBurger: function(burger, callback){
-	// 	var s = "INSERT INTO " + tableName + " (burger_name, devoured, date) VALUES (?,?,now())";
-	// 	burger.devoured = burger.devoured || false;
-	// 	connection.query(s, [
-	// 		burger.burger_name, burger.devoured
-	// 	], function(err, result){
-	// 		callback(result);
-	// 	});
-	// },
+	// insertOne()
+	addBurger: function(burger, callback){
+		var s = "INSERT INTO " + tableName + " (burger_name, devoured, date) VALUES (?,?,now())";
+		burger.devoured = burger.devoured || false;
+		connection.query(s, [
+			burger.burger_name, burger.devoured
+		], function(err, result){
+			callback(result);
+		});
+	},
 
-	// // updateOne()
-	// updateBurger: function(burger, callback){
-	// 	var s = "UPDATE " + tableName + " (SET burger_name=?, devoured=? WHERE id=?)";
+	// updateOne()
+	updateBurger: function(burger, callback){
+		var s = "UPDATE " + tableName + " (SET burger_name=?, devoured=? WHERE id=?)";
 
-	// 	connection.query(s, [
-	// 		burger.burger_name, burger.devoured, burger.id
-	// 	],function(err, result){
-	// 		callback(result);
-	// 	});
-	// },
+		connection.query(s, [
+			burger.burger_name, burger.devoured, burger.id
+		],function(err, result){
+			callback(result);
+		});
+	},
 
 }
 
