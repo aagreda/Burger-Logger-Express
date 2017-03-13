@@ -21,7 +21,7 @@ var exphbs = require('express-handlebars');
 app.engine('handlebars', exphbs({defaultLayout:"main"}));
 app.set('view engine', 'handlebars');
 
-app.use(express.static(path.join(__dirname, './views/layouts/public')));
+app.use(express.static(process.cwd() + "/public"));
 
 
 var route = require('./controllers/burgers_controller.js');

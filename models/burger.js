@@ -23,7 +23,14 @@ var burgerQueries = {
 		orm.updateBurger(burgerId, function(res){
 			callback(res);
 		});
+	},
+
+	deleteBurger: function(burgerId, callback){
+		orm.deleteBurger(burgerId, function(res){
+			callback(res);
+		});
 	}
+
 };
 
 module.exports = burgerQueries;

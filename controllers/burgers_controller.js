@@ -18,8 +18,14 @@ router.post('/create', function(req,res){
 	});
 });
 
+router.put("/uneat/:id", function(req, res){
+	queries.deleteBurger(req.params.id, function(data){
+		res.redirect('/')
+	});
+});
+
 router.put("/:id", function(req, res){
-	queries.updateBurger(req.body.id, function(data){
+	queries.updateBurger(req.params.id, function(data){
 		res.redirect('/')
 	});
 });

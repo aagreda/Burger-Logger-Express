@@ -12,13 +12,14 @@ connection.connect(function(err){
 
 // In the orm.js file, create the methods that will execute the necessary MySQL commands in the controllers. These are the methods you will need to use in order to retrieve and store data in your database.
 
+
 var orm = {
 	// selectAll()
 	getBurgers: function(tableName, callback){
 		connection.query('SELECT * FROM burgers', function(err,result){
 			if(err) throw err;
 			callback(result);
-		})
+		});
 	},
 
 	// insertOne()
@@ -28,7 +29,7 @@ var orm = {
 		connection.query(mySQLQuery, function(err, result){
 			if(err)throw err;
 			callback(result);
-		})
+		});
 	},
 
 	// updateOne()
@@ -37,8 +38,18 @@ var orm = {
 		connection.query("UPDATE burgers SET devoured=1 WHERE id=?", [id], function(err, result){
 			if(err) throw err;
 			callback(result);
-		})
+		});
 	},
+
+	// updateOne()
+	deleteBurger: function(burgerId, callback){
+		var id = burgerId;
+		connection.query("UPDATE burgers SET devoured=0 WHERE id=?", [id], function(err, result){
+			if(err) throw err;
+			callback(result);
+		});
+	},
+
 }
 
 // Export the ORM object in module.exports
